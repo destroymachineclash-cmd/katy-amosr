@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nossa História - Katy ❤️</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #ff4d6d, #ff758c, #ffb3c1);
+  color: white;
+  overflow: hidden;
+}
+
+.pagina {
+  display: none;
+  min-height: 100vh;
+  padding: 35px 22px;
+  text-align: center;
+  animation: aparecer 0.7s ease;
+}
+
+.ativa {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.caixa {
+  width: 100%;
+  max-width: 780px;
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 28px;
+  padding: 30px 24px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+  backdrop-filter: blur(10px);
+}
+
+h1 {
+  font-size: 2.3rem;
+  margin-bottom: 18px;
+  text-shadow: 0 4px 10px rgba(0,0,0,0.25);
+}
+
+p {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  margin-top: 12px;
+}
+
+button {
+  margin-top: 28px;
+  padding: 15px 26px;
+  border: none;
+  border-radius: 999px;
+  background: white;
+  color: #e84367;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.22);
+  transition: 0.25s;
+}
+
+button:hover {
+  transform: scale(1.06);
+  background: #fff5f7;
+}
+
+.botoes {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+#finalMsg {
+  display: none;
+  margin-top: 22px;
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.coracao {
+  position: fixed;
+  bottom: -40px;
+  color: rgba(255,255,255,0.85);
+  font-size: 24px;
+  animation: subir 7s linear infinite;
+  z-index: -1;
+}
+
+@keyframes subir {
+  0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+  20% { opacity: 1; }
+  100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
+}
+
+.contador {
+  margin-top: 18px;
+  opacity: 0.9;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 600px) {
+  h1 { font-size: 1.9rem; }
+  p { font-size: 1rem; }
+  .caixa { padding: 26px 18px; }
+}
+</style>
+</head>
+<body>
+
+<div class="pagina ativa">
+  <div class="caixa">
+    <h1>Pra você, Katy ❤️</h1>
+    <p>
+      Eu fiz esse site como um jeito diferente de te lembrar o quanto você é especial pra mim.
+      Não é só uma página bonita… é um pedacinho do que eu sinto por você.
+    </p>
+    <button onclick="proxima()">Começar nossa história</button>
+  </div>
+</div>
+
+<div class="pagina">
+  <div class="caixa">
+    <h1>Minha promessa pra você ❤️</h1>
+    <p>
+      Prometo estar contigo em todos os momentos ❤️ sejam eles felizes 💕 ou difíceis 🥺
+      porque amar não é só estar nos sorrisos ❤️ mas também nas lágrimas 💖
+      e eu quero ser sempre o teu porto seguro ❤️💕 eu quero ser a pessoa que você olha
+      e sente que nunca vai estar sozinha ❤️🥰 você é o meu futuro, meu presente e o meu maior tesouro 💖❤️
+    </p>
+    <div class="botoes">
+      <button onclick="voltar()">Voltar</button>
+      <button onclick="proxima()">Última página</button>
+    </div>
+  </div>
+</div>
+
+<div class="pagina">
+  <div class="caixa">
+    <h1>Mensagem final</h1>
+    <p>
+      Se eu pudesse transformar tudo que sinto em palavras, ainda assim não seria suficiente.
+      Mas de um jeito simples e sincero, eu quero te dizer uma coisa…
+    </p>
+    <button onclick="mostrarFinal()">Clique aqui, amor</button>
+    <div id="finalMsg">Nunca se esqueça, meu denguinho lindo ❤️ eu te amo infinitamente 💕 além do que as palavras podem descrever ❤️ e sempre vou te amar, hoje, amanhã e por toda a eternidade ❤️❤️❤️ você é e sempre será o amor da minha vida 💕🥺✨</div>
+    <div class="botoes">
+      <button onclick="voltar()">Voltar</button>
+    </div>
+    <p class="contador">Hoje comemoramos 1 ano juntos ❤️ obrigado por cada momento, Katy.</p>
+  </div>
+</div>
+
+<script>
+let paginaAtual = 0;
+const paginas = document.querySelectorAll('.pagina');
+
+function proxima() {
+  if (paginaAtual < paginas.length - 1) {
+    paginas[paginaAtual].classList.remove('ativa');
+    paginaAtual++;
+    paginas[paginaAtual].classList.add('ativa');
+  }
+}
+
+function voltar() {
+  if (paginaAtual > 0) {
+    paginas[paginaAtual].classList.remove('ativa');
+    paginaAtual--;
+    paginas[paginaAtual].classList.add('ativa');
+  }
+}
+
+function mostrarFinal() {
+  document.getElementById('finalMsg').style.display = 'block';
+}
+
+function criarCoracao() {
+  const c = document.createElement('div');
+  c.className = 'coracao';
+  c.innerHTML = '❤';
+  c.style.left = Math.random() * 100 + 'vw';
+  c.style.fontSize = 16 + Math.random() * 30 + 'px';
+  c.style.animationDuration = 5 + Math.random() * 5 + 's';
+  document.body.appendChild(c);
+  setTimeout(() => c.remove(), 10000);
+}
+
+setInterval(criarCoracao, 450);
+</script>
+
+</body>
+</html>
